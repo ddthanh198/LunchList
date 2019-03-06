@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">LunchList</string>
+    <string name="take_out">Take out</string>
+    <string name="sit_down">Sit down</string>
+    <string name="delivery">Delivery</string>
+    <string name="type">Type</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="save">save</string>
 </resources>
