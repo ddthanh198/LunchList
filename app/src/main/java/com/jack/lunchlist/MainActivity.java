@@ -7,6 +7,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.QuickContactBadge;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView lvRestaurants;
+    private GridView grRestaurants;
     private RadioGroup rgTypes;
     private EditText etName;
     private EditText etAddr;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView ivType;
 
     private ArrayList<Restaurant> listRestaurants = new ArrayList<>();
-    private ArrayList<Restaurant> adapter;
+    private ListRestaurantAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +34,15 @@ public class MainActivity extends AppCompatActivity {
         init();
         setEvent();
         setupListView();
-
     }
 
     private void setupListView(){
-        ListRestaurantAdapter adapter = new ListRestaurantAdapter(this,R.layout.item_list_restaurants,listRestaurants);
-        lvRestaurants.setAdapter(adapter);
+        adapter = new ListRestaurantAdapter(this,R.layout.item_list_restaurants,listRestaurants);
+        grRestaurants.setAdapter(adapter);
     }
 
     private void init(){
-        lvRestaurants = findViewById(R.id.lv_list_restaurants);
+        grRestaurants = findViewById(R.id.gr_list_restaurants);
         rgTypes = findViewById(R.id.rg_types);
         etName = findViewById(R.id.et_name);
         etAddr = findViewById(R.id.et_addr);
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 listRestaurants.add(restaurant);
+                adapter.notifyDataSetChanged();
             }
         });
 
